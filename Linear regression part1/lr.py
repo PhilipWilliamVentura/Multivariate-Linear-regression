@@ -11,10 +11,9 @@ X = np.concatenate([ones, X], 1)
 y = my_data[:, 1].reshape(-1,1)
 
 plt.scatter(my_data[:,0].reshape(-1,1), y)
-plt.show()
 
 #HYPERPARAMETERS
-alpha=0.001
+alpha=0.0001
 iters=1000
 theta=np.array([[1.0, 1.0]])
 
@@ -26,9 +25,9 @@ def find_cost(X, y, theta):
 #GRADIENT DESCENT
 def gradient_descent(X, y, theta, alpha, iters):
     for i in range(iters):
-        theta = theta - (alpha/len(X)) * np.sum((X@theta.T - y) * X, axis = 0)
+        theta = theta - (alpha/len(X)) * np.sum((X @ theta.T - y) * X, axis = 0)
         cost = find_cost(X, y, theta)
-        return (theta, cost)
+    return (theta, cost)
 
 g, cost = gradient_descent(X, y, theta, alpha, iters)
 plt.scatter(my_data[:, 0].reshape(-1,1), y)
